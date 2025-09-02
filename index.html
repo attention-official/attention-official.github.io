@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Attention Official</title>
+  <style>
+    /* Genel ayarlar */
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      background: black;
+      color: #ff0000;
+      font-family: "Courier New", monospace;
+      overflow: hidden;
+    }
+
+    /* Matrix tarzı kayan efekt */
+    canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+
+    /* Başlık */
+    h1 {
+      font-size: 80px;
+      text-shadow: 0 0 20px red, 0 0 40px darkred;
+      animation: glow 2s infinite alternate;
+      margin: 0;
+    }
+
+    /* Alt yazı */
+    p {
+      font-size: 20px;
+      margin-top: 15px;
+      color: #ccc;
+      letter-spacing: 3px;
+    }
+
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 10px red, 0 0 20px darkred;
+      }
+      to {
+        text-shadow: 0 0 30px red, 0 0 60px darkred;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Yazılar -->
+  <h1>ATTENTION</h1>
+  <p>We are the voice in the dark</p>
+
+  <!-- Matrix efekt canvas -->
+  <canvas id="matrix"></canvas>
+
+  <script>
+    // Matrix efekt script
+    const canvas = document.getElementById("matrix");
+    const ctx = canvas.getContext("2d");
+
+    canvas.height = window.innerHeight;
+    canvas.width = window.innerWidth;
+
+    const letters = "01ATTENTION";
+    const fontSize = 16;
+    const columns = canvas.width / fontSize;
+
+    const drops = [];
+    for (let x = 0; x < columns; x++) drops[x] = 1;
+
+    function draw() {
+      ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.fillStyle = "#ff0000"; // Yazı rengi kırmızı
+      ctx.font = fontSize + "px monospace";
+
+      for (let i = 0; i < drops.length; i++) {
+        const text = letters.charAt(Math.floor(Math.random() * letters.length));
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975)
+          drops[i] = 0;
+
+        drops[i]++;
+      }
+    }
+
+    setInterval(draw, 33);
+  </script>
+</body>
+</html>
