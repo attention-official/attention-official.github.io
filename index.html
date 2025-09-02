@@ -5,97 +5,262 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Attention Official</title>
   <style>
-    /* Genel ayarlar */
     body {
       margin: 0;
       padding: 0;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
+      font-family: 'Courier New', monospace;
       background: black;
-      color: #ff0000;
-      font-family: "Courier New", monospace;
-      overflow: hidden;
+      color: white;
+      overflow-x: hidden;
     }
 
-    /* Matrix tarzı kayan efekt */
     canvas {
-      position: absolute;
+      position: fixed;
       top: 0;
       left: 0;
       z-index: -1;
     }
 
-    /* Başlık */
-    h1 {
-      font-size: 80px;
-      text-shadow: 0 0 20px red, 0 0 40px darkred;
-      animation: glow 2s infinite alternate;
-      margin: 0;
+    /* Giriş ekranı */
+    #intro {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: rgba(0,0,0,0.9);
     }
 
-    /* Alt yazı */
-    p {
-      font-size: 20px;
-      margin-top: 15px;
-      color: #ccc;
+    h1 {
+      font-size: 4em;
+      color: red;
+      text-shadow: 0 0 20px red, 0 0 40px red;
+      animation: glow 2s infinite alternate;
+    }
+
+    h2 {
+      color: #aaa;
+      font-size: 1.2em;
+      margin-top: 10px;
       letter-spacing: 3px;
     }
 
     @keyframes glow {
-      from {
-        text-shadow: 0 0 10px red, 0 0 20px darkred;
-      }
-      to {
-        text-shadow: 0 0 30px red, 0 0 60px darkred;
-      }
+      from { text-shadow: 0 0 10px red, 0 0 20px red; }
+      to { text-shadow: 0 0 30px red, 0 0 60px red; }
+    }
+
+    .enter-btn {
+      margin-top: 40px;
+      padding: 12px 28px;
+      font-size: 1.2em;
+      color: white;
+      background: red;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      box-shadow: 0 0 20px red, 0 0 40px red;
+      transition: 0.3s;
+    }
+
+    .enter-btn:hover {
+      background: darkred;
+      box-shadow: 0 0 30px red, 0 0 60px red;
+    }
+
+    /* Ana içerik */
+    #main {
+      display: none;
+      text-align: center;
+    }
+
+    /* Navbar */
+    nav {
+      background: rgba(0,0,0,0.8);
+      padding: 15px;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    nav a {
+      color: red;
+      text-decoration: none;
+      font-size: 1.2em;
+      transition: 0.3s;
+      text-shadow: 0 0 10px red;
+    }
+
+    nav a:hover {
+      color: white;
+      text-shadow: 0 0 20px red, 0 0 40px red;
+    }
+
+    section {
+      padding: 80px 20px;
+      min-height: 100vh;
+    }
+
+    #home h1 {
+      font-size: 3em;
+      color: red;
+      text-shadow: 0 0 20px red, 0 0 40px red;
+    }
+
+    #home p {
+      font-size: 1.3em;
+      color: #ddd;
+    }
+
+    #about p, #contact p {
+      max-width: 700px;
+      margin: auto;
+      font-size: 1.1em;
+      line-height: 1.6em;
+    }
+
+    /* News kutuları */
+    .news-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .news {
+      background: rgba(255,0,0,0.1);
+      border: 1px solid red;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 0 20px red;
+      transition: 0.3s;
+    }
+
+    .news:hover {
+      background: rgba(255,0,0,0.2);
+      transform: scale(1.05);
+    }
+
+    footer {
+      background: black;
+      padding: 20px;
+      color: #666;
+      font-size: 0.9em;
+      border-top: 1px solid red;
     }
   </style>
 </head>
 <body>
-  <!-- Yazılar -->
-  <h1>ATTENTION</h1>
-  <p>We are the voice in the dark</p>
-
-  <!-- Matrix efekt canvas -->
   <canvas id="matrix"></canvas>
 
-  <script>
-    // Matrix efekt script
-    const canvas = document.getElementById("matrix");
-    const ctx = canvas.getContext("2d");
+  <!-- Giriş ekranı -->
+  <div id="intro">
+    <h1>ATTENTION</h1>
+    <h2>OFFICIAL WEBSITE</h2>
+    <button class="enter-btn" onclick="enterSite()">Enter Site</button>
+  </div>
 
+  <!-- Ana içerik -->
+  <div id="main">
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#news">News</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <section id="home">
+      <h1>Welcome to Attention</h1>
+      <p>We are Attention. Expect us.</p>
+    </section>
+
+    <section id="about">
+      <h1>About Us</h1>
+      <p>
+        Attention Official is a collective dedicated to awareness, freedom, and digital presence.  
+        Our mission is to deliver truth and build a stronger connection with the world.  
+      </p>
+    </section>
+
+    <section id="news">
+      <h1>Latest News</h1>
+      <div class="news-container">
+        <div class="news">
+          <h3>Update #1</h3>
+          <p>Attention Official website launched successfully. Stay tuned for more.</p>
+        </div>
+        <div class="news">
+          <h3>Update #2</h3>
+          <p>We are working on new projects. More details coming soon.</p>
+        </div>
+        <div class="news">
+          <h3>Update #3</h3>
+          <p>Collaboration announcements will be shared shortly.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h1>Contact</h1>
+      <p>
+        You can reach us at: <br>
+        <b>Email:</b> attention@protonmail.com <br>
+        <b>Telegram:</b> @attention_official
+      </p>
+    </section>
+
+    <footer>
+      © 2025 Attention Official | All rights reserved.
+    </footer>
+  </div>
+
+  <script>
+    // Matrix effect
+    const canvas = document.getElementById('matrix');
+    const ctx = canvas.getContext('2d');
     canvas.height = window.innerHeight;
     canvas.width = window.innerWidth;
 
-    const letters = "01ATTENTION";
-    const fontSize = 16;
+    const letters = "01".split("");
+    const fontSize = 14;
     const columns = canvas.width / fontSize;
-
     const drops = [];
-    for (let x = 0; x < columns; x++) drops[x] = 1;
+
+    for (let x = 0; x < columns; x++) {
+      drops[x] = 1;
+    }
 
     function draw() {
       ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      ctx.fillStyle = "#ff0000"; // Yazı rengi kırmızı
+      ctx.fillStyle = "#ff0000";
       ctx.font = fontSize + "px monospace";
 
       for (let i = 0; i < drops.length; i++) {
-        const text = letters.charAt(Math.floor(Math.random() * letters.length));
+        const text = letters[Math.floor(Math.random() * letters.length)];
         ctx.fillText(text, i * fontSize, drops[i] * fontSize);
 
-        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975)
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
           drops[i] = 0;
-
+        }
         drops[i]++;
       }
     }
 
-    setInterval(draw, 33);
+    setInterval(draw, 50);
+
+    // Enter site
+    function enterSite() {
+      document.getElementById('intro').style.display = 'none';
+      document.getElementById('main').style.display = 'block';
+    }
   </script>
 </body>
 </html>
