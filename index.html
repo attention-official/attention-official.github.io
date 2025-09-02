@@ -7,74 +7,95 @@
   <style>
     body {
       margin: 0;
-      font-family: 'Courier New', Courier, monospace;
-      background: black;
+      padding: 0;
+      font-family: "Courier New", monospace;
+      background: linear-gradient(135deg, #0d0d0d, #1a1a1a, #330000);
       color: white;
       text-align: center;
     }
+
     header {
       background: black;
-      padding: 20px;
+      padding: 15px 0;
     }
-    header nav a {
-      margin: 0 15px;
+
+    nav a {
       color: red;
       text-decoration: none;
-      font-size: 20px;
-    }
-    header nav a:hover {
-      text-decoration: underline;
-    }
-    .matrix {
-      background: url('https://i.ibb.co/3Fk4n5M/red-matrix.gif') repeat;
-      background-size: cover;
-      min-height: 100vh;
-      padding-top: 100px;
-    }
-    h1 {
-      font-size: 60px;
-      color: red;
-      text-shadow: 0 0 15px red;
-    }
-    p {
+      margin: 0 20px;
       font-size: 18px;
-      color: #fff;
+      font-weight: bold;
+      transition: 0.3s;
     }
-    a {
-      color: #0ff;
+
+    nav a:hover {
+      color: white;
+    }
+
+    .hero {
+      padding: 100px 20px;
+    }
+
+    .hero h1 {
+      font-size: 48px;
+      color: red;
+      text-shadow: 0px 0px 15px black;
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: #ccc;
+      margin-top: 10px;
+    }
+
+    .contact {
+      background: #111;
+      padding: 50px 20px;
+      margin-top: 50px;
+      border-top: 2px solid red;
+    }
+
+    .contact h2 {
+      color: red;
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+
+    .contact p {
+      font-size: 18px;
+    }
+
+    footer {
+      background: black;
+      padding: 15px;
+      font-size: 14px;
+      color: #aaa;
     }
   </style>
 </head>
 <body>
   <header>
     <nav>
-      <a href="#home">Ana Sayfa</a>
-      <a href="#about">Hakkımızda</a>
-      <a href="#news">Haberler</a>
-      <a href="#contact">İletişim</a>
+      <a href="#">Ana Sayfa</a>
+      <a href="#">Haberler</a>
+      <a href="#">Hakkımızda</a>
+      <a href="#iletisim">İletişim</a>
     </nav>
   </header>
 
-  <section id="home" class="matrix">
+  <section class="hero">
     <h1>Attention Official</h1>
     <p>Resmi web sitemize hoş geldiniz.</p>
   </section>
 
-  <section id="about" class="matrix">
-    <h1>Hakkımızda</h1>
-    <p>Bu, Attention grubunun resmi sayfasıdır. Güncellemeler ve duyurular burada paylaşılacaktır.</p>
+  <section id="iletisim" class="contact">
+    <h2>İletişim</h2>
+    <p><b>Telegram:</b> <a href="https://t.me/attentionht" target="_blank">@attentionht</a></p>
+    <p><b>Email:</b> <a href="mailto:zynx.resmi@gmail.com">zynx.resmi@gmail.com</a></p>
   </section>
 
-  <section id="news" class="matrix">
-    <h1>Haberler</h1>
-    <p>Tüm önemli duyurular ve güncellemeler burada yer alacaktır.</p>
-  </section>
-
-  <section id="contact" class="matrix">
-    <h1>İletişim</h1>
-    <p>Bize ulaşmak için:</p>
-    <p><strong>Email:</strong> <a href="mailto:zynx.resmi@gmail.com">zynx.resmi@gmail.com</a></p>
-    <p><strong>Telegram:</strong> <a href="https://t.me/attentionht" target="_blank">@attentionht</a></p>
-  </section>
+  <footer>
+    © 2025 Attention Official - Tüm hakları saklıdır.
+  </footer>
 </body>
 </html>
