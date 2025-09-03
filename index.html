@@ -48,36 +48,43 @@
       margin-top: 10px;
     }
 
-    .about {
-      background: #111;
-      padding: 50px 20px;
-      margin-top: 50px;
-      border-top: 2px solid red;
-      border-bottom: 2px solid red;
+    .news {
+      background: #260000;
+      padding: 40px 20px;
+      border-top: 3px solid red;
+      border-bottom: 3px solid red;
+      margin: 40px 0;
     }
 
-    .about h2 {
-      font-size: 32px;
-      color: red;
+    .news h2 {
+      font-size: 34px;
+      color: #ff1a1a;
+      text-shadow: 0 0 10px black;
       margin-bottom: 20px;
+      animation: blink 1.5s infinite;
     }
 
-    .about p {
+    @keyframes blink {
+      0%, 100% { color: #ff1a1a; }
+      50% { color: white; }
+    }
+
+    .news p {
       font-size: 18px;
-      line-height: 1.8;
-      max-width: 800px;
+      max-width: 900px;
       margin: auto;
+      line-height: 1.8;
       color: #ddd;
     }
 
-    .skills {
-      background: #1a1a1a;
+    .about, .skills, .contact {
       padding: 50px 20px;
       border-top: 2px solid red;
       border-bottom: 2px solid red;
+      margin-top: 50px;
     }
 
-    .skills h2 {
+    .about h2, .skills h2, .contact h2 {
       font-size: 32px;
       color: red;
       margin-bottom: 20px;
@@ -95,23 +102,6 @@
       font-size: 18px;
       color: #ddd;
       padding: 8px 0;
-    }
-
-    .contact {
-      background: #111;
-      padding: 50px 20px;
-      margin-top: 50px;
-      border-top: 2px solid red;
-    }
-
-    .contact h2 {
-      color: red;
-      font-size: 28px;
-      margin-bottom: 20px;
-    }
-
-    .contact p {
-      font-size: 18px;
     }
 
     footer {
@@ -135,6 +125,21 @@
   <section class="hero">
     <h1>Attention Official</h1>
     <p>Resmi web sitemize hoş geldiniz.</p>
+  </section>
+
+  <!-- YENİ HABER -->
+  <section class="news">
+    <h2>🚨 YENİ HABER !! 🚨</h2>
+    <p>
+      Attention üyesi <b>Zynx</b>, günümüzdeki adıyla <b>N3CRØ</b>, büyük bir siber operasyon ile gündeme geldi.  
+      Sanal dünyada büyük yankı uyandıran bu olayda, <b>5 farklı web sitesi</b> kontrol altına alındı ve 
+      sitelerin geri bırakılması için fidye talep edildi.  
+    </p>
+    <p>
+      Ele geçirilen sitelerin <b>İsrail</b> ve <b>Yunanistan</b> merkezli olduğu biliniyor.  
+      Bununla birlikte N3CRØ, Discord’daki bazı sanal toplulukları da çökertti.  
+      Bu olay, Attention’un sanal dünyadaki gücünü bir kez daha kanıtladı.
+    </p>
   </section>
 
   <section id="hakkimizda" class="about">
