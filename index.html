@@ -18,6 +18,7 @@
       flex-direction: column;
       overflow: hidden;
       text-align: center;
+      position: relative;
     }
 
     .heart {
@@ -63,6 +64,7 @@
 
     .buttons {
       margin-top: 40px;
+      position: relative;
     }
 
     button {
@@ -91,12 +93,30 @@
       position: absolute;
     }
 
-    .message {
+    #messageBox {
       margin-top: 30px;
-      font-size: 26px;
+      font-size: 40px;
       font-weight: bold;
       display: none;
       text-shadow: 0 0 10px yellow;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .falling-heart {
+      position: absolute;
+      top: -50px;
+      font-size: 30px;
+      animation: fall linear forwards;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(110vh);
+        opacity: 0;
+      }
     }
   </style>
 </head>
@@ -109,12 +129,27 @@
     <button id="noBtn" onmouseover="moveNo()">Hayır</button>
   </div>
 
-  <div class="message" id="messageBox"></div>
+  <div id="messageBox"></div>
 
   <script>
     function sayYes() {
-      document.getElementById("messageBox").style.display = "block";
-      document.getElementById("messageBox").innerText = "Seviyorum senii 🌹";
+      let msg = document.getElementById("messageBox");
+      msg.style.display = "block";
+      msg.innerText = "Seviyorum senii 🌹";
+
+      // Kalpler yağdırma
+      setInterval(() => {
+        let heart = document.createElement("div");
+        heart.classList.add("falling-heart");
+        heart.innerText = "💖";
+        heart.style.left = Math.random() * window.innerWidth + "px";
+        heart.style.animationDuration = (2 + Math.random() * 3) + "s";
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+          heart.remove();
+        }, 5000);
+      }, 200);
     }
 
     function moveNo() {
@@ -124,8 +159,9 @@
       noBtn.style.left = x + "px";
       noBtn.style.top = y + "px";
 
-      document.getElementById("messageBox").style.display = "block";
-      document.getElementById("messageBox").innerText = "Hayır'a basamazsın <3";
+      let msg = document.getElementById("messageBox");
+      msg.style.display = "block";
+      msg.innerText = "Hayır'a basamazsın <3";
     }
   </script>
 </body>
