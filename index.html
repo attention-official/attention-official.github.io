@@ -3,191 +3,92 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Attention Official</title>
+  <title>Romantik Sözler</title>
   <style>
     body {
       margin: 0;
       padding: 0;
       font-family: "Courier New", monospace;
-      background: linear-gradient(135deg, #0d0d0d, #1a1a1a, #330000);
+      background: linear-gradient(135deg, #ffb6c1, #ff69b4, #ff1493);
       color: white;
       text-align: center;
+      height: 100vh;
+      overflow: hidden;
     }
 
-    header {
-      background: black;
-      padding: 15px 0;
+    .container {
+      position: relative;
+      top: 20%;
     }
 
-    nav a {
-      color: red;
-      text-decoration: none;
-      margin: 0 20px;
-      font-size: 18px;
-      font-weight: bold;
+    h1 {
+      font-size: 32px;
+      text-shadow: 0 0 10px #ff0066;
+    }
+
+    button {
+      margin-top: 30px;
+      padding: 15px 30px;
+      font-size: 20px;
+      background: white;
+      color: #ff0066;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
       transition: 0.3s;
     }
 
-    nav a:hover {
+    button:hover {
+      background: #ff0066;
       color: white;
     }
 
-    .hero {
-      padding: 100px 20px 50px 20px;
+    .message {
+      margin-top: 40px;
+      font-size: 28px;
+      font-weight: bold;
+      display: none;
+      color: yellow;
+      text-shadow: 0px 0px 15px red;
     }
 
-    .hero h1 {
-      font-size: 48px;
+    .heart {
+      position: absolute;
+      font-size: 24px;
       color: red;
-      text-shadow: 0px 0px 15px black;
+      animation: fall linear;
     }
 
-    .hero p {
-      font-size: 18px;
-      color: #ccc;
-      margin-top: 10px;
-    }
-
-    .news {
-      background: #260000;
-      padding: 40px 20px;
-      border-top: 3px solid red;
-      border-bottom: 3px solid red;
-      margin: 40px 0;
-    }
-
-    .news h2 {
-      font-size: 34px;
-      color: #ff1a1a;
-      text-shadow: 0 0 10px black;
-      margin-bottom: 20px;
-      animation: blink 1.5s infinite;
-    }
-
-    @keyframes blink {
-      0%, 100% { color: #ff1a1a; }
-      50% { color: white; }
-    }
-
-    .news p {
-      font-size: 18px;
-      max-width: 900px;
-      margin: auto;
-      line-height: 1.8;
-      color: #ddd;
-    }
-
-    .about, .skills, .contact {
-      padding: 50px 20px;
-      border-top: 2px solid red;
-      border-bottom: 2px solid red;
-      margin-top: 50px;
-    }
-
-    .about h2, .skills h2, .contact h2 {
-      font-size: 32px;
-      color: red;
-      margin-bottom: 20px;
-    }
-
-    .skills ul {
-      list-style: none;
-      padding: 0;
-      max-width: 600px;
-      margin: auto;
-      text-align: left;
-    }
-
-    .skills li {
-      font-size: 18px;
-      color: #ddd;
-      padding: 8px 0;
-    }
-
-    footer {
-      background: black;
-      padding: 15px;
-      font-size: 14px;
-      color: #aaa;
+    @keyframes fall {
+      0% { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(100vh); opacity: 0; }
     }
   </style>
 </head>
 <body>
-  <header>
-    <nav>
-      <a href="#">Ana Sayfa</a>
-      <a href="#">Haberler</a>
-      <a href="#hakkimizda">Hakkımızda</a>
-      <a href="#yetenekler">Yetenekler</a>
-    </nav>
-  </header>
+  <div class="container">
+    <h1>🌹 Sen benim en güzel tesadüfümsün 🌹</h1>
+    <h1>❤️ Kalbim hep seninle ❤️</h1>
+    <button onclick="showLove()">Hadi Bas</button>
+    <div class="message" id="loveMessage">Bunu okuyan kişi seviliyorsun <3</div>
+  </div>
 
-  <section class="hero">
-    <h1>Attention Official</h1>
-    <p>Resmi web sitemize hoş geldiniz.</p>
-  </section>
+  <script>
+    function showLove() {
+      document.getElementById("loveMessage").style.display = "block";
 
-  <!-- YENİ HABER -->
-  <section class="news">
-    <h2>🚨 YENİ HABER !! 🚨</h2>
-    <p>
-      Attention üyesi <b>Zynx</b>, günümüzdeki adıyla <b>N3CRØ</b>, büyük bir siber operasyon ile gündeme geldi.  
-      Sanal dünyada büyük yankı uyandıran bu olayda, <b>5 farklı web sitesi</b> kontrol altına alındı ve 
-      sitelerin geri bırakılması için fidye talep edildi.  
-    </p>
-    <p>
-      Ele geçirilen sitelerin <b>İsrail</b> ve <b>Yunanistan</b> merkezli olduğu biliniyor.  
-      Bununla birlikte N3CRØ, Discord’daki bazı sanal toplulukları da çökertti.  
-      Bu olay, Attention’un sanal dünyadaki gücünü bir kez daha kanıtladı.
-    </p>
-  </section>
+      for (let i = 0; i < 30; i++) {
+        let heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.innerHTML = "❤️";
+        heart.style.left = Math.random() * window.innerWidth + "px";
+        heart.style.top = "-20px";
+        heart.style.animationDuration = (2 + Math.random() * 3) + "s";
+        document.body.appendChild(heart);
 
-  <section id="hakkimizda" class="about">
-    <h2>Attention Hakkında</h2>
-    <p>
-      Attention, dijital dünyada güçlü bir varlıktır. Sanal alemde büyük icraatlara imza atmış,
-      kararlılığı ve etkisiyle dikkat çeken bir topluluktur.  
-      Bilgi, hız ve disiplin ile hareket eder; fark yaratmayı hedefler.  
-      Gücünü birlikten ve vizyonundan alır.  
-      Sanal dünyanın karanlık köşelerinde dahi adını duyurmuş, iz bırakan bir oluşumdur.
-    </p>
-    <p>
-      Attention’un liderleri <b>Casrev</b> ve <b>Oixin</b>’dir.  
-      50’den fazla dünya çapında üyesi olduğu bilinir.  
-      En iyi üyeler arasında ise <b>Zynx</b> öne çıkar.  
-      Şu anki adıyla <b>N3CRØ</b> olarak bilinen bu isim, topluluğun tanınmış ve güçlü figürlerinden biridir.
-    </p>
-  </section>
-
-  <section id="yetenekler" class="skills">
-    <h2>Attention Ekibinin Yetenekleri</h2>
-    <ul>
-      <li>⚡ SQL Attack</li>
-      <li>⚡ DDoS Attack</li>
-      <li>⚡ Ban Sistemleri</li>
-      <li>⚡ Instagram Hesap Ele Geçirme</li>
-      <li>⚡ TikTok Hesap Ele Geçirme</li>
-      <li>⚡ Sosyal Medya Hesap Kontrolü</li>
-      <li>⚡ RAT & Trojan Yöntemleri</li>
-      <li>⚡ Phishing & CC İşlemleri</li>
-      <li>⚡ Dark Web Operasyonları</li>
-      <li>⚡ Sistemlere Sızma</li>
-      <li>⚡ Veri Toplama ve Bilgi Çalma</li>
-      <li>⚡ Kimlik Avı ve Sosyal Mühendislik</li>
-      <li>⚡ Siber Manipülasyon</li>
-      <li>⚡ Güvenlik Duvarı Aşma</li>
-      <li>⚡ Gizli Ağ Operasyonları</li>
-    </ul>
-  </section>
-
-  <section id="iletisim" class="contact">
-    <h2>İletişim</h2>
-    <p><b>Telegram:</b> <a href="https://t.me/attentionht" target="_blank">@attentionht</a></p>
-    <p><b>Email:</b> <a href="mailto:zynx.resmi@gmail.com">zynx.resmi@gmail.com</a></p>
-  </section>
-
-  <footer>
-    © 2025 Attention Official - Tüm hakları saklıdır.
-  </footer>
+        setTimeout(() => { heart.remove(); }, 4000);
+      }
+    }
+  </script>
 </body>
 </html>
