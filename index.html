@@ -1,80 +1,104 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Attention Official</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Courier New', Courier, monospace;
-      background: black;
-      color: white;
-      text-align: center;
-    }
-    header {
-      background: black;
-      padding: 20px;
-    }
-    header nav a {
-      margin: 0 15px;
-      color: red;
-      text-decoration: none;
-      font-size: 20px;
-    }
-    header nav a:hover {
-      text-decoration: underline;
-    }
-    .matrix {
-      background: url('https://i.ibb.co/3Fk4n5M/red-matrix.gif') repeat;
-      background-size: cover;
-      min-height: 100vh;
-      padding-top: 100px;
-    }
-    h1 {
-      font-size: 60px;
-      color: red;
-      text-shadow: 0 0 15px red;
-    }
-    p {
-      font-size: 18px;
-      color: #fff;
-    }
-    a {
-      color: #0ff;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <title>Hacked</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            background: black;
+            overflow: hidden;
+            height: 100%;
+            font-family: 'Courier New', Courier, monospace;
+            color: white;
+        }
+
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 0;
+        }
+
+        .center-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 1;
+        }
+
+        .anonymous-logo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 2px solid red;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            color: red;
+            font-size: 36px;
+            margin: 10px 0;
+        }
+
+        p {
+            color: white;
+            font-size: 18px;
+            max-width: 600px;
+            margin: auto;
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <nav>
-      <a href="#home">Ana Sayfa</a>
-      <a href="#about">Hakkımızda</a>
-      <a href="#news">Haberler</a>
-      <a href="#contact">İletişim</a>
-    </nav>
-  </header>
+    <canvas id="matrixCanvas"></canvas>
 
-  <section id="home" class="matrix">
-    <h1>Attention Official</h1>
-    <p>Resmi web sitemize hoş geldiniz.</p>
-  </section>
+    <div class="center-content">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Anonymous_emblem.svg/512px-Anonymous_emblem.svg.png" alt="Anonymous" class="anonymous-logo">
+        <h1>Hacked By N3CRØ</h1>
+        <p>Bu sisteme ben sızdım, herhangi bir dava sonucu tamamen şahsım sorumludur.</p>
+    </div>
 
-  <section id="about" class="matrix">
-    <h1>Hakkımızda</h1>
-    <p>Bu, Attention grubunun resmi sayfasıdır. Güncellemeler ve duyurular burada paylaşılacaktır.</p>
-  </section>
+    <script>
+        const canvas = document.getElementById('matrixCanvas');
+        const ctx = canvas.getContext('2d');
 
-  <section id="news" class="matrix">
-    <h1>Haberler</h1>
-    <p>Tüm önemli duyurular ve güncellemeler burada yer alacaktır.</p>
-  </section>
+        canvas.height = window.innerHeight;
+        canvas.width = window.innerWidth;
 
-  <section id="contact" class="matrix">
-    <h1>İletişim</h1>
-    <p>Bize ulaşmak için:</p>
-    <p><strong>Email:</strong> <a href="mailto:zynx.resmi@gmail.com">fwsaved@gmail.com</a></p>
-    <p><strong>Telegram:</strong> <a href="https://t.me/attentionht" target="_blank">@attentionht</a></p>
-  </section>
+        const letters = "01";
+        const fontSize = 16;
+        const columns = canvas.width / fontSize;
+
+        const drops = Array.from({ length: columns }, () => 1);
+
+        function drawMatrix() {
+            ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.fillStyle = "#ff0000"; // kırmızı renk
+            ctx.font = fontSize + "px monospace";
+
+            for (let i = 0; i < drops.length; i++) {
+                const text = letters[Math.floor(Math.random() * letters.length)];
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+
+                drops[i]++;
+            }
+        }
+
+        setInterval(drawMatrix, 33);
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+    </script>
 </body>
 </html>
